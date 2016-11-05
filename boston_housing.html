@@ -276,23 +276,25 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Using numpy where possible as requested by the question, though this is sweeter using pandas directly.</span>
 
-<span class="c1"># Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="c1"># Minimum price of the data.  Can also do prices.min()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
-<span class="c1"># Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># Maximum price of the data.  Can also do prices.max()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
-<span class="c1"># Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="c1"># Mean price of the data.  Can also do prices.mean()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
-<span class="c1"># Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="c1"># Median price of the data.  Can also do prices.median()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+
+<span class="c1"># Standard deviation of prices of the data.  Can also do prices.std()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -319,7 +321,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -352,7 +354,7 @@ Standard deviation of prices: $165,340.28
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li><em><code>'RM'</code> An increase would result in increased house prices, and a decrease would result in decreased house prices.  Houses with more rooms are typically more expensive due to being larger in size.</em></li>
+<li><em><code>'RM'</code> An increase would result in increased house prices, and a decrease would result in decreased house prices.  Houses with more rooms are typically more expensive due to being larger in size. A house with 7 rooms will be more expensive than a house with 6 rooms.</em></li>
 <li><em><code>'LSTAT'</code> A higher percentage would result in lower house prices, whilst a lower percentage results in higher house prices.  People on working class incomes typically could only afford a cheaper house, hence if there are a lot of working class people we can deduce the house prices are lower.</em></li>
 <li><em><code>'PTRATIO'</code> A higher ratio of students to teachers would suggest cheaper house prices.  Schools with a high number of teachers suggest a higher teaching quality and better school, and hence being more desirable.  Having houses nearby these more desirable schools would drive up demand and house prices.   </em></li>
 </ul>
@@ -560,7 +562,7 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> <em>If all datapoints are allocated to training, then there will be no way to determine whether the model is going to work correctly on real-world data, since the model will be built to fit all the provided data - i.e. the model will end up with high variance towards the sample data.</em></p>
+<p><strong>Answer: </strong> <em>If all datapoints are allocated to training, then there will be no way to determine whether the model is going to work correctly on real-world data, since the model will be built to fit all the provided data - i.e. the model will end up with high variance towards the sample data.  By testing, the model can be adjusted and optimized.</em></p>
 <p><em>By splitting the data and providing some seperate test data, the model has a way to be tested before being applied to real-world data.  Not having a way to test model before deployment could result in terrible consequences if applied to the real world. You could end up with an ecstatic buyer who's just walked away with some hot Boston property for the price of a bagel.</em></p>
 
 </div>
@@ -2516,7 +2518,7 @@ Predicted selling price for Client 3&apos;s home: $1,021,650.00
     Maximum price: $1,024,800.00
     Mean price: $454,342.94
     Median price $438,900.00
-    Standard deviation of prices: $165,340.28</code></pre>
+    Standard deviation of prices: $165,171.13</code></pre>
 <p>As above, I would use the model's predicted prices for each client:</p>
 
 <pre><code>Predicted selling price for Client 1's home: $426,300.00
