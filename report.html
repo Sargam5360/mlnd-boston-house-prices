@@ -2195,7 +2195,7 @@ RU5ErkJggg==
 <li><strong>max_depth = 1:</strong> The model suffers from high bias here.  The model has not been sufficiently trained and does not achieve a strong validation score of only 0.4.  In terms of Decision Tree regression, we can deduce that not enough decision tree rules have been made at a shallow depth of 1.  A model has been formed with very few features/criterium and becomes underfitted. This is characteristic of high bias. </li>
 <li><strong>max_depth = 10:</strong> The model suffers from high variance here.  The model has been overtrained, and while it performs near-perfectly with training data, it performs poorly with validation score.  In terms of Decision Tree regression, there are now too many rules since the tree is deep.  The model has been formed with many features, and ends up becoming overfitted.  This is characteristic of high variance.</li>
 </ul>
-<p>The size of the gap between the training score and the validation score lines serves as a visual cue to justify this conclusion.  A model that has high variance will perform very well on training data since it has become overfitted towards that, but will perform poorly on test data - this causing a large divergence between the lines (and consequently performance).</p>
+<p>The size of the gap between the training score and the validation score lines serves as a visual cue to justify this conclusion.  A model that has high variance will perform very well on training data since it has become overfitted towards that, but will perform poorly on test data - thus causing a large divergence between the lines (and consequently performance).</p>
 <p>Where the two lines are very close together (e.g. at max depth 1) but the overall performance is very poor (~0.4 in this case) for both training and testing data, is a good indicator of high bias.  This is because whilst the performance between training and testing data is relatively consistent, there are not enough features for the model to perform well - it is underfitted.</p>
 
 </div>
@@ -2247,7 +2247,7 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The grid-search technique is an iteration/bruteforce technique to tune parameters of a learning algorithm.  Tuning multiple parameters turns the optimaztion into a 'grid', attempting to find the optimal values for multiple parameters within given ranges.  Parameters are evaluated for every set in the Cartesian product of each parameter range.  In other words, every possible combination of parameters is tested against a scoring function.  In this case our scoring function is based upon an R^2 test to test correlation strength.  The combination which yields the highest R^2 score is chosen.</p>
+<p><strong>Answer: </strong> The grid-search technique is an iteration/bruteforce technique to tune parameters of a learning algorithm.  Tuning multiple parameters turns the optimization into a 'grid', attempting to find the optimal values for multiple parameters within given ranges.  Parameters are evaluated for every set in the Cartesian product of each parameter range.  In other words, every possible combination of parameters is tested against a scoring function.  In this case our scoring function is based upon an R^2 test to test correlation strength.  The combination which yields the highest R^2 score is chosen.</p>
 
 </div>
 </div>
@@ -2272,10 +2272,10 @@ RU5ErkJggg==
 <ul>
 <li>Split the data into k datasets.  By default scikit picks 3</li>
 <li>Run the model with the test data corresopnding to an individual dataset - test[1] all the way through to test[k].  Each time, a single dataset represents the test data - the rest is used as training data.  Hence, with a default k of 3, the size of the test would be 1/3, and the other 2/3 are training data.</li>
-<li>Consturct an average of results based upon the results of each iteration
-The key advantages of this technique is that you end up with a more accurate model, and you're able to use all data for training and testing - which is useful for smaller sample sizes. The same data will also never be reused for testing, unlike other cross-validation techniques.</li>
+<li>Construct an average of results based upon the results of each iteration.</li>
 </ul>
-<p>For optimization of tuning parameters, a cross-validation also inherits the same benefits.  There's more sample data, and the tuning parameters can be tested multiple times to enhance performance.  If fixed tuning parameters were to be used, they may suffer from high variance towards the data that they were tuned on.  By cross-validating our tuning parameters, we ensure they're compatible with a larger data set.</p>
+<p>The key advantages of this technique are that you end up with a more accurate model, and you're able to use all data for training and testing - which is useful for smaller sample sizes. The same data will also never be reused for testing, unlike other cross-validation techniques.</p>
+<p>For optimization of tuning parameters, a cross-validation also inherits the same benefits.  There's more sample data, and the tuning parameters can be tested multiple times to enhance performance.  If fixed tuning parameters were to be used, they may overfit towards a non-representative dataset that they were tuned on.  By cross-validating our tuning parameters, we cut down on this possibility by rotating the data.</p>
 
 </div>
 </div>
